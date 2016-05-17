@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-
     <style>
         body {
-            background: url('../media/bg.png') no-repeat;
+            background: url('../media/bg.png') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -46,8 +45,8 @@ if (isset($_SESSION['email'])) {
                                                    aria-hidden="true"></span> Admin Page</a>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="admin_search.php">Search</a></li>
-                        <li><a href="admin.php">Verify Requests</a></li>
-
+                        <li><a href="admin_process_requests.php">Process Requests</a></li>
+                        <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
                     </ul>
 
                 </div>
@@ -60,11 +59,10 @@ if (isset($_SESSION['email'])) {
             </div>
         </nav>
 
-        <?php
-        print "<h1>Welcome to the admin page " . $_SESSION['firstname'] . "</h1>";
-        ?>
+
         <div style="margin-left:100px;margin-top:100px;">
             <h1>Search for users in the database</h1>
+
             <form class="form-inline" action="admin_search_proc.php" method="POST">
                 <div class="form-group">
                     <label for="emailsearch">Search</label>

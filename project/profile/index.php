@@ -1,9 +1,14 @@
-<style>
-    img {
-        border-radius: 80mm;
-    }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta>
+    <title>Green Leb - Profile</title>
 
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
 
 <?php
 /**
@@ -23,9 +28,24 @@ function displayInformation($email)
     $result = mysqli_query($conn, $sql);
     $rowcount = mysqli_num_rows($result);
 
+
+    $sql2 = "SELECT * FROM project_unverified_users WHERE email= '$email'";
+
+    $result2 = mysqli_query($conn, $sql2);
+    $rowcount2 = mysqli_num_rows($result2);
+
     if ($rowcount > 0) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        print "<img src='" . get_gravatar($_SESSION['email']) . "'/><br/>";
+        print "<img src='" . get_gravatar($_SESSION['email'], 80, 'mm') . "'/><br/>";
+        print "First name: " . $row['firstname'] . " <br/>";
+        print "Last name: " . $row['lastname'] . " <br/>";
+        print "E-mail: " . $row['email'] . " <br/>";
+        print "Phone number: " . $row['phone'] . " <br/>";
+        print "Address: " . $row['address'] . " <br/>";
+        print "Date joined: " . $row['date_joined'] . " <br/>";
+    } else if ($rowcount2 > 0) {
+        $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+        print "<img src='" . get_gravatar($_SESSION['email'], 80, 'mm') . "'/><br/>";
         print "First name: " . $row['firstname'] . " <br/>";
         print "Last name: " . $row['lastname'] . " <br/>";
         print "E-mail: " . $row['email'] . " <br/>";
@@ -62,11 +82,36 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts 
 }
 
 if (isset($_SESSION['email'])) {
+    ?>
+
+    <ul class="nav">
+        <li class="logo">Green Lebanon</li>
+        <li><a href="../index.php">Lobby</a></li>
+        <li><a href="../requests">Requests</a></li>
+        <li style="float:right" class="active"><a href="../profile/">Profile</a></li>
+        <?php
+        if (getPermissions($_SESSION['email']) == 1) {
+            ?>
+            <li style="float:right"><a href="../admin/">Admin</a></li>
+            <?php
+        }
+        ?>
+    </ul>
+
+    <br/>
+    <br/>
+    <?php
+    if (isset($_SESSION['email-unverified'])) {
+        print '<div class="alert-danger"><strong>Warning!</strong> - Please check your mail to activate your account!</div>';
+    }
+
     displayInformation($_SESSION['email']);
-    print "Click <a href='../logout.php'>here</a> to logout. <br/>";
-    print "Click <a href='./change_password.php'>here</a> to change password.";
-    print getPermissions($_SESSION['email']);
+    print "Click <a href='../logout.php'>here</a> to logout.<br/>";
+    print "Click <a href='change_password.php'>here</a> to change password.<br/>";
 
 } else {
     header('location: ../login/');
 }
+
+?>
+</body>

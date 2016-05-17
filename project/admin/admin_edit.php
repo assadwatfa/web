@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-
     <style>
         body {
-            background: url('../media/bg.png') no-repeat;
+            background: url('../media/bg.png') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
         }
-
     </style>
     <script type="text/javascript">
         function unreadonly1() {
@@ -78,8 +76,7 @@ if (isset($_SESSION['email'])) {
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar"
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                             aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -90,15 +87,15 @@ if (isset($_SESSION['email'])) {
                                                    aria-hidden="true"></span> Admin Page</a>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="admin_search.php">Search</a></li>
-                        <li><a href="admin.php">Verify Requests</a></li>
-
+                        <li><a href="admin_process_requests.php">Process Requests</a></li>
+                        <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
                     </ul>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         </li>
-                        <li><a href="logout.php">Logout</a></li>
+                        <li><a href="../logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -126,6 +123,7 @@ if (isset($_SESSION['email'])) {
             <form class="form-horizontal" style="max-width:500px;" action="admin_edit_proc.php" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newid"> ID</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newid" value="<?php echo $oldid; ?>"
                                id="newid"
@@ -137,6 +135,7 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newfirstname">First Name</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newfirstname"
                                value="<?php echo $oldfirstname; ?>" id="newfirstname" onblur="readonlyon(this)">
@@ -146,6 +145,7 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newlastname">Last Name</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newlastname"
                                value="<?php echo $oldlastname; ?>"
@@ -156,6 +156,7 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newemail">Email address</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="email" class="form-control" name="newemail"
                                value="<?php echo $oldemail; ?>"
@@ -167,6 +168,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Phone Number</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newphonenumber"
                                value="<?php echo $oldphonenumber; ?>" id="newphonenumber" onblur="readonlyon(this)">
@@ -178,6 +180,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Permissions</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newpermissions"
                                value="<?php echo $oldpermissions; ?>" id="newpermissions" onblur="readonlyon(this)">
@@ -189,6 +192,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newaddress">Address</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newaddress"
                                value="<?php echo $oldaddress; ?>"

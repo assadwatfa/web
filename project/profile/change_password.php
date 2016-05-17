@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Green Leb - Login Page</title>
+    <meta>
+    <title>Green Leb - Profile</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php
@@ -11,26 +14,39 @@ if (!isset($_SESSION['email'])) {
     header('location: ../login/');
 } else {
     ?>
-    <table>
-        <form method="post" action="change_password_handler.php">
-            <tr>
-                <td>Current Password:</td>
-                <td><input type="password" name="currentpassword" placeholder="Enter your current password" size="30">
-                </td>
-            </tr>
-            <tr>
-                <td>New Password:</td>
-                <td><input type="password" name="password1" placeholder="Enter your new password" size="30"></td>
-            </tr>
-            <tr>
-                <td>Re-type new password:</td>
-                <td><input type="password" name="password2" placeholder="Confirm your new password" size="30"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Save"></td>
-            </tr>
-        </form>
-    </table>
+    <ul class="nav">
+        <li class="logo">Green Lebanon</li>
+        <li><a href="../index.php">Lobby</a></li>
+        <li><a href="../requests">Requests</a></li>
+        <li style="float:right" class="active"><a href="../profile/">Profile</a></li>
+    </ul>
+    <br/><br/>
+    <?php
+    if (isset($_SESSION['email-unverified'])) {
+        print '<div class="alert-danger"><strong>Warning!</strong> - Please check your mail to activate your account!</div>';
+    }
+    ?>
+
+    <form method="post" action="change_password_handler.php">
+        <div class="form-group">
+            <h2 class="form-heading">Change password</h2>
+            <input type="password" placeholder="Enter your current password" name="currentpassword" id="currentpassword"
+                   class="form-control">
+
+
+            <input type="password" placeholder="Enter your new password" name="password1"
+                   class="form-control">
+
+            <input type="password" placeholder="Confirm your new password" name="password2"
+                   class="form-control">
+            <br/>
+        </div>
+
+        <div style="position:relative; left:90px;top:0px;">
+            <button type="submit" class="button-primary">Login</button>
+        </div>
+    </form>
+
     <?php
 }
 ?>

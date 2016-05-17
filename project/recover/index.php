@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Form</title>
+    <meta>
+    <title>Green Leb - Recover</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
 <?php
 session_start();
@@ -12,16 +17,25 @@ if (isset($_SESSION['email'])) {
     header('location: ../profile/');
 } else {
     ?>
-    <form action="recover_process.php" method="post">
-        <table>
-            <tr>
-                <td>Enter your E-mail:</td>
-                <td><input type="email" size="30" name="email"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Recover"></td>
-            </tr>
-        </table>
+    <ul class="nav">
+        <li class="logo">Green Lebanon</li>
+        <li><a href="../index.php">Lobby</a></li>
+        <li><a href="../requests">Requests</a></li>
+        <li><a href="../login">Login</a></li>
+        <li><a href="../register">Register</a></li>
+
+    </ul>
+
+    <form method="post" action="recover_process.php">
+        <div class="form-group">
+            <h2 class="form-heading">Recover page</h2>
+            <input type="text" placeholder="Enter your e-mail" name="email" id="email" class="form-control">
+            <br/>
+        </div>
+
+        <div style="position:relative; left:90px;top:0px;">
+            <button type="submit" class="button-primary">Recover</button>
+        </div>
     </form>
 
     <?php

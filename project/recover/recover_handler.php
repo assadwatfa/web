@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Form</title>
+    <meta>
+    <title>Green Leb - Recover</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
 <?php
 session_start();
 include('../config.php');
+include('../nodes/index.php');
 
 
 if (isset($_SESSION['email'])) {
     header('location: ../profile/');
 } else {
+    ?>
+    <ul class="nav">
+        <li class="logo">Green Lebanon</li>
+        <li><a href="../index.php">Lobby</a></li>
+        <li><a href="../requests">Requests</a></li>
+        <li><a href="../login">Login</a></li>
+        <li><a href="../register">Register</a></li>
+    </ul>
+    <br/>
+
+    <?php
     if (!isset($_POST['recovery_code'])) {
         print "Recovery code is missing.";
     } else if (!isset($_POST['email'])) {
@@ -26,8 +43,11 @@ if (isset($_SESSION['email'])) {
             $password = strip_tags($_POST['password1']);
             $encryptedPassword = md5($password);
 
-
-            $sql_check = "SELECT * FROM project_users WHERE password_recovery= '$code' AND email= '$email'";
+            if (checkAvailability($email) === 1) {
+                $sql_check = "SELECT * FROM project_users WHERE password_recovery= '$code' AND email= '$email'";
+            } else if (checkAvailability($email) === 2) {
+                $sql_check = "SELECT * FROM project_unverified_users WHERE password_recovery= '$code' AND email= '$email'";
+            }
 
             $result_check = mysqli_query($conn, $sql_check);
             $rowcount = mysqli_num_rows($result_check);
@@ -35,12 +55,22 @@ if (isset($_SESSION['email'])) {
             $email = $row['email'];
 
             if ($rowcount > 0) {
-                $sql_update_password = "UPDATE project_users SET password='$encryptedPassword' WHERE password_recovery= '$code'";
+                if (checkAvailability($email) === 1) {
+                    $sql_update_password = "UPDATE project_users SET password='$encryptedPassword' WHERE password_recovery= '$code'";
+                } else if (checkAvailability($email) === 2) {
+                    $sql_update_password = "UPDATE project_unverified_users SET password='$encryptedPassword' WHERE password_recovery= '$code'";
+                }
+
                 if (mysqli_query($conn, $sql_update_password)) {
-                    $sql_update_recovery = "UPDATE project_users SET password_recovery='' WHERE email= '$email'";
+                    if (checkAvailability($email) === 1) {
+                        $sql_update_recovery = "UPDATE project_users SET password_recovery='' WHERE email= '$email'";
+                    } else if (checkAvailability($email) === 2) {
+                        $sql_update_recovery = "UPDATE project_unverified_users SET password_recovery='' WHERE email= '$email'";
+                    }
+
                     if (mysqli_query($conn, $sql_update_recovery)) {
                         print "Successfully changed password. <br/>";
-                        print "Click <a href='../login/'>here</a> to log in.";
+                        print "Click <a href='../login'>here</a> to log in.";
                     }
                 }
             } else {

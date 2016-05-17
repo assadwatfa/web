@@ -1,10 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta>
+    <title>Green Leb - Register</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<?php
+//session_start();
+//
+//if (isset($_SESSION['email'])) {
+//    header('location: ../profile/');
+//} else {
+//    ?>
+<ul class="nav">
+    <li class="logo">Green Lebanon</li>
+    <li><a href="../index.php">Lobby</a></li>
+    <li><a href="../requests">Requests</a></li>
+    <li><a href="../login">Login</a></li>
+    <li class="active"><a href="">Register</a></li>
+    <!--        <li style="float:right"><a href="profile.php">Profile</a></li>-->
+    <!--        <li style="float:right"><a href="settings.php">Settings</a></li>-->
+</ul>
+
+
+<br/><br/><br/><br/>
+
 <?php
 /**
  * User: lebgh0st
  * Date: 5/12/16
  */
 
-session_start();
 include('../config.php');
 
 if (isset($_GET['verification_code']) && isset($_GET['email'])) {
@@ -32,8 +63,11 @@ if (isset($_GET['verification_code']) && isset($_GET['email'])) {
         if (mysqli_query($conn, $sql_insert)) {
             $sql_delete = "DELETE FROM project_unverified_users WHERE verification_code= '$code'";
             if (mysqli_query($conn, $sql_delete)) {
+                if (isset($_SESSION['email'])) {
+                    session_destroy();
+                }
                 print "Account successfully activated.<br/>";
-                print "Click <a href='../login/'>here</a> to log in.<br/>";
+                print "Click <a href='../login'>here</a> to log in.<br/>";
             } else {
                 print "Something went wrong with deleting data. <br/>";
             }
@@ -47,3 +81,11 @@ if (isset($_GET['verification_code']) && isset($_GET['email'])) {
 } else {
     print "Please enter a valid verification code & email.<br/>";
 }
+//}
+
+?>
+
+</body>
+</html>
+
+

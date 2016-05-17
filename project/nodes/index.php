@@ -34,3 +34,26 @@ function getPermissions($email)
         print $email . " was not found.";
     }
 }
+
+function checkAvailability($email)
+{
+
+    global $conn;
+    $sql = "SELECT * FROM project_users WHERE email= '$email'";
+
+    $result = mysqli_query($conn, $sql);
+    $rowcount = mysqli_num_rows($result);
+
+    $sql2 = "SELECT * FROM project_unverified_users WHERE email= '$email'";
+
+    $result2 = mysqli_query($conn, $sql2);
+    $rowcount2 = mysqli_num_rows($result2);
+
+    if ($rowcount > 0) {
+        return 1;
+    } else if ($rowcount2 > 0) {
+        return 2;
+    } else {
+        return -1;
+    }
+}

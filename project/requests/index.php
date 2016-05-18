@@ -3,7 +3,7 @@
 <head>
     <meta>
     <title>Green Leb - Requests</title>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -123,15 +123,47 @@ if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert-danger">Please check your mail to activate your account!</div>';
 }
 
+if (isset($_POST['sendButton'])) {
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        $sql = "SELECT * FROM project_users WHERE email= '$email'";
+        if ($result = mysqli_query($conn, $sql)) {
+            $rowcount = mysqli_num_rows($result);
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-    if (checkUserRequest($email) != 1) {
-        ?>
-        <button type="button" class="btn btn-success center-block btn-lg">
-            Request
-        </button><br/>
-        <?php
+
+            $requestEmail = $row['email'];
+            $requestAddress = $row['address'];
+
+
+            $sql2 = "INSERT INTO project_requests (email, address)VALUES('$requestEmail', '$requestAddress')";
+            if (mysqli_query($conn, $sql2)) {
+                print '
+                                <button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>
+            <div class="alert alert-success" role="alert">Successfully requested!</div>';
+            }
+        }
+    }
+} else {
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        if (checkUserRequest($email) != 1) {
+            ?>
+            <form action="index.php" method="post">
+                <button name="sendButton" type="submit" class="btn btn-success center-block btn-lg">
+                    Request
+                </button>
+            </form>
+
+            <br/>
+            <?php
+        } else {
+            ?>
+            <button type="button" class="btn btn-success disabled center-block btn-lg">
+                Request
+            </button><br/>
+            <?php
+        }
     } else {
         ?>
         <button type="button" class="btn btn-success disabled center-block btn-lg">
@@ -139,12 +171,6 @@ if (isset($_SESSION['email'])) {
         </button><br/>
         <?php
     }
-} else {
-    ?>
-    <button type="button" class="btn btn-success disabled center-block btn-lg">
-        Request
-    </button><br/>
-    <?php
 }
 
 
@@ -206,6 +232,7 @@ if (isset($_SESSION['email'])) {
         }
     }
 
+    displayRequests();
     ?>
 
 </table>

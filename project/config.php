@@ -1,9 +1,9 @@
 <?php
 
 $dbhost = "localhost";
-$dbusername = "dbuser";
-$dbpassword = "password";
-$dbname = "dbname";
+$dbusername = "";
+$dbpassword = "";
+$dbname = "";
 $conn = mysqli_connect($dbhost, $dbusername, $dbpassword);
 if ($conn) {
     mysqli_select_db($conn, $dbname);

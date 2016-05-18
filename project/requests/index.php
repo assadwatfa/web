@@ -128,28 +128,77 @@ if (isset($_SESSION['email-unverified'])) {
 
     include('../config.php');
 
-    $sql = "SELECT * FROM project_requests_processing";
 
-    if ($result = mysqli_query($conn, $sql)) {
+    function checkUserRequest($email)
+    {
+        global $conn;
+        $sql = "SELECT * FROM project_requests WHERE email= '$email'";
+        $result = mysqli_query($conn, $sql);
         $rowcount = mysqli_num_rows($result);
-        if ($rowcount > 0) {
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $rows[] = $row;
-            }
 
-            foreach ($rows as $row) {
-                echo
-                    "<tr>
+        $sql2 = "SELECT * FROM project_requests_processing WHERE email= '$email'";
+
+        $result2 = mysqli_query($conn, $sql2);
+        $rowcount2 = mysqli_num_rows($result2);
+
+        if ($rowcount > 0 || $rowcount2 > 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        if (checkUserRequest($email) != 1) {
+            ?>
+            <button type="button" class="btn btn-success center-block btn-lg">
+                Request
+            </button><br/>
+            <?php
+        } else {
+            ?>
+            <button type="button" class="btn btn-success disabled center-block btn-lg">
+                Request
+            </button><br/>
+            <?php
+        }
+    } else {
+        ?>
+        <button type="button" class="btn btn-success disabled center-block btn-lg">
+            Request
+        </button><br/>
+        <?php
+    }
+
+
+    function displayRequests()
+    {
+        global $conn;
+        $sql = "SELECT * FROM project_requests_processing";
+
+        if ($result = mysqli_query($conn, $sql)) {
+            $rowcount = mysqli_num_rows($result);
+            if ($rowcount > 0) {
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $rows[] = $row;
+                }
+
+                foreach ($rows as $row) {
+                    echo
+                        "<tr>
                     <td> " . $row['address'] . " </td>
                     <td> " . $row['email'] . "</td>
                     <td> " . $row['driver_email'] . "</td>
                     <td> " . $row['date_processing'] . "</td>
                   </tr>";
+                }
             }
+        } else {
+            print "Couldn't fetch data.<br/>";
         }
-    } else {
-        print "Couldn't fetch data.<br/>";
     }
+
     ?>
 
 </table>

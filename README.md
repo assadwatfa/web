@@ -1,3 +1,3 @@
 # BAU CS Team
-<h1>BAU Web Project</h1>
-<p>Configuration</p>
+## Documentation
+<p>Documentation is available on the <a href='https://github.com/BAUCSTeam/web/wiki' target='_blank'>Github Wiki</a></p>

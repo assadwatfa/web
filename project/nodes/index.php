@@ -27,11 +27,9 @@ function getPermissions($email)
             return 2;
         } else if ($permissions == 3) {
             return 3;
-        } else {
-            return -1;
         }
     } else {
-        print $email . " was not found.";
+     return -1;  
     }
 }
 

@@ -9,6 +9,11 @@
 </head>
 <body>
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/12/16
+ */
+
 session_start();
 if (!isset($_SESSION['email'])) {
     header('location: ../login/');

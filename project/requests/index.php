@@ -92,12 +92,9 @@
     <li class="active"><a href="">Requests</a></li>
     <?php
     /**
-     * Created by PhpStorm.
-     * User: Hassan
+     * User: Hassan J.
      * Date: 5/14/2016
-     * Time: 5:14 PM
      */
-
     include('../config.php');
 
     session_start();

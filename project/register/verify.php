@@ -32,7 +32,7 @@
 
 <?php
 /**
- * User: lebgh0st
+ * User: Hassan J.
  * Date: 5/12/16
  */
 

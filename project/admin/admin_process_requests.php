@@ -79,10 +79,10 @@ $row_num++)
 {
 $row = mysqli_fetch_assoc($result);
 print "<tbody><td>";
-print "</td><td>" . $row["id"];
-print "</td><td>" . $row["address"];
-print "</td><td>" . $row["email"];
-print "</td><td>" . $row["date_added"];
+print "</td><td>" . $row['id'];
+print "</td><td>" . $row['address'];
+print "</td><td>" . $row['email'];
+print "</td><td>" . $row['date_added'];
 ?>
 </td>
 <td>

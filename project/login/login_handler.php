@@ -23,6 +23,10 @@
 <br/>
 
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/12/16
+ */
 session_start();
 include('../config.php');
 
@@ -73,8 +77,6 @@ if (isset($_SESSION['email'])) {
             print "Go back by clicking <a href='../login/'>here</a>.";
 
         }
-
-
     }
 }
 

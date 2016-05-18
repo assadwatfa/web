@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Hassan
- * Date: 5/14/2016
- * Time: 5:34 PM
+ * User: Hassan J.
+ * Date: 5/14/16
  */
 
 include('../config.php');

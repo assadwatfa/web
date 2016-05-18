@@ -11,6 +11,12 @@
 
 <body>
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/12/16
+ */
+
+include('../config.php');
 session_start();
 
 if (isset($_SESSION['email'])) {
@@ -30,7 +36,6 @@ if (isset($_SESSION['email'])) {
 
     <?php
 
-    include('../config.php');
 
     if (isset($_SESSION['email'])) {
         header('location: ../profile/');

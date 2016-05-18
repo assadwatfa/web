@@ -1,6 +1,11 @@
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/15/16
+ */
 
-$dbhost = "localhost";
+
+$dbhost = "";
 $dbusername = "";
 $dbpassword = "";
 $dbname = "";

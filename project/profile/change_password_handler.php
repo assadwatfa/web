@@ -8,7 +8,13 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/12/16
+ */
+
 session_start();
 include('../config.php');
 include('../nodes/index.php');

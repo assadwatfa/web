@@ -91,10 +91,20 @@
     <li><a href="../index.php">Lobby</a></li>
     <li class="active"><a href="">Requests</a></li>
     <?php
+    /**
+     * Created by PhpStorm.
+     * User: Hassan
+     * Date: 5/14/2016
+     * Time: 5:14 PM
+     */
+
+    include('../config.php');
+
     session_start();
     if (isset($_SESSION['email'])) {
         ?>
         <li style="float:right"><a href="../profile">Profile</a></li>
+
         <?php
     } else {
         ?>
@@ -106,10 +116,38 @@
     ?>
 </ul>
 <br/><br/>
+
 <?php
+
 if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert-danger">Please check your mail to activate your account!</div>';
 }
+
+
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    if (checkUserRequest($email) != 1) {
+        ?>
+        <button type="button" class="btn btn-success center-block btn-lg">
+            Request
+        </button><br/>
+        <?php
+    } else {
+        ?>
+        <button type="button" class="btn btn-success disabled center-block btn-lg">
+            Request
+        </button><br/>
+        <?php
+    }
+} else {
+    ?>
+    <button type="button" class="btn btn-success disabled center-block btn-lg">
+        Request
+    </button><br/>
+    <?php
+}
+
+
 ?>
 <table class="table table-hover table-striped">
     <tr>
@@ -119,14 +157,6 @@ if (isset($_SESSION['email-unverified'])) {
         <th>Date processing</th>
     </tr>
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: Hassan
-     * Date: 5/14/2016
-     * Time: 5:14 PM
-     */
-
-    include('../config.php');
 
 
     function checkUserRequest($email)
@@ -146,29 +176,6 @@ if (isset($_SESSION['email-unverified'])) {
         } else {
             return -1;
         }
-    }
-
-    if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-        if (checkUserRequest($email) != 1) {
-            ?>
-            <button type="button" class="btn btn-success center-block btn-lg">
-                Request
-            </button><br/>
-            <?php
-        } else {
-            ?>
-            <button type="button" class="btn btn-success disabled center-block btn-lg">
-                Request
-            </button><br/>
-            <?php
-        }
-    } else {
-        ?>
-        <button type="button" class="btn btn-success disabled center-block btn-lg">
-            Request
-        </button><br/>
-        <?php
     }
 
 

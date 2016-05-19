@@ -4,10 +4,9 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-
     <style>
         body {
-            background: url('../media/bg.png') no-repeat center center fixed;
+            background: url('../media/bg.png') no-repeat;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -21,6 +20,8 @@
 
 <?php
 session_start();
+
+include('../config.php');
 include('../nodes/index.php');
 
 if (isset($_SESSION['email'])) {
@@ -41,9 +42,12 @@ if (isset($_SESSION['email'])) {
                     <a class="navbar-brand"> <span class="glyphicon glyphicon-user"
                                                    aria-hidden="true"></span> Admin Page</a>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="admin_search.php">Search</a></li>
+                        <li class="active"><a href="admin_search.php">Search</a></li>
                         <li><a href="admin_process_requests.php">Process Requests</a></li>
                         <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
+                        <li><a href="admin_add_driver.php">Add Driver</a></li>
+                        <li><a href="admin_view_drivers.php">View Drivers</a></li>
+
                     </ul>
 
                 </div>

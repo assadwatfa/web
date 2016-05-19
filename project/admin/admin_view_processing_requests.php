@@ -2,14 +2,15 @@
 <html>
 <head>
     <meta>
-    <title>Search</title>
+    <title>Processing Requests</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+
     <style>
         body {
-            background: url('../media/bg.png') no-repeat center center fixed;
+            background: url('../media/bg.png') no-repeat;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -36,7 +37,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="admin_search.php">Search</a></li>
                 <li><a href="admin_process_requests.php">Process Requests</a></li>
-                <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
+                <li class="active"><a href="admin_view_processing_requests.php">Requests Processing</a></li>
+                <li><a href="admin_add_driver.php">Add Driver</a></li>
+                <li><a href="admin_view_drivers.php">View Drivers</a></li>
+
             </ul>
 
         </div>
@@ -50,7 +54,9 @@
 </nav>
 <?php
 session_start();
+
 include('../config.php');
+include('../nodes/index.php');
 
 $query = "SELECT * FROM project_requests_processing ";
 $result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
@@ -60,17 +66,17 @@ if ($result) {
     if ($num_rows > 0) {
 
         print "<table class=\"table table-striped\"><tr>
-			<th>ID</th>
+			
 			<th>Driver's Email</th>
 			<th>Address</th>
 			<th>User's Email</th>
-			<th>Date Processed</th>
+			<th>Date Proccessed</th>
 			
 			</tr>";
         for ($row_num = 1; $row_num <= $num_rows; $row_num++) {
             $row = mysqli_fetch_assoc($result);
             print "<tbody><tr>";
-            print "</td><td>" . $row["id"];
+
             print "</td><td>" . $row["driver_email"];
             print "</td><td>" . $row["address"];
             print "</td><td>" . $row["email"];

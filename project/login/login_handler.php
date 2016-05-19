@@ -2,24 +2,40 @@
 <html>
 <head>
     <meta>
-    <title>Green Leb - Login</title>
-
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 
-
 <body>
-<ul class="nav">
-    <li class="logo">Green Lebanon</li>
-    <li><a href="../index.php">Lobby</a></li>
-    <li><a href="../requests">Requests</a></li>
-    <li class="active"><a href="index.php">Login</a></li>
-    <li><a href="../register">Register</a></li>
-    <!--        <li style="float:right"><a href="profile.php">Profile</a></li>-->
-    <!--        <li style="float:right"><a href="settings.php">Settings</a></li>-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"> <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                Green Leb</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../requests/">Requests</a></li>
+                <li><a href="../education/">Education</a></li>
+                <li><a href="../help/">Help</a></li>
+            </ul>
 
-</ul>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../register/">Register</a></li>
+                <li><a href="../login/">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <br/>
 
 <?php
@@ -74,7 +90,8 @@ if (isset($_SESSION['email'])) {
             header('location: ../profile/');
         } else {
             print "Wrong email or password.<br/>";
-            print "Go back by clicking <a href='../login/'>here</a>.";
+            print "Go back by clicking <a href='../login/'>here</a>.<br/>";
+            print "Forgot your password? Click <a href='../recover/'>here</a>.";
 
         }
     }

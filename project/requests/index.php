@@ -1,124 +1,80 @@
 <!DOCTYPE html>
-<html>
 <head>
-    <meta>
-    <title>Green Leb - Requests</title>
+    <title>
+
+    </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
     <script src="../bootstrap/js/bootstrap.js"></script>
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Helvetica;
-            background: url('../media/bg.png') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-
-        img {
-            border-radius: 80mm;
-        }
-
-        .alert-danger {
-            color: #a94442;
-            background-color: #f2dede;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .nav {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #F8F8F8;
-        }
-
-        .nav li {
-            display: inline-block;
-            padding-right: 20px;
-            font-size: 15px;
-            float: left;
-        }
-
-        .nav li a {
-            display: block;
-            color: #737373;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        #align-right {
-            align: right;
-            float: right;
-            text-align: right;
-        }
-
-        .nav li a:hover {
-            text-decoration: none;
-            color: #C1C1C1;
-        }
-
-        .active {
-            background-color: #e7e7e7;
-        }
-
-        .logo {
-            color: #737373;
-            float: left;
-            font-size: 15px;
-            font-weight: bold;
-            padding-left: 15px;
-            margin-top: 14px;
-
-        }
-
-    </style>
 </head>
-
-
 <body>
-<ul class="nav">
-    <li class="logo">Green Lebanon</li>
-    <li><a href="../index.php">Lobby</a></li>
-    <li class="active"><a href="">Requests</a></li>
-    <?php
-    /**
-     * User: Hassan J.
-     * Date: 5/14/2016
-     */
-    include('../config.php');
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"> <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                Green Leb</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../requests/">Requests</a></li>
+                <li><a href="../education/">Education</a></li>
+                <li><a href="../help/">Help</a></li>
+            </ul>
 
-    session_start();
-    if (isset($_SESSION['email'])) {
-        ?>
-        <li style="float:right"><a href="../profile">Profile</a></li>
-
+        </div>
         <?php
-    } else {
-        ?>
-        <li><a href="../login">Login</a></li>
-        <li><a href="../register">Register</a></li>
 
-        <?php
-    }
-    ?>
-</ul>
-<br/><br/>
+        session_start();
+        include('../config.php');
+        include('../nodes/index.php');
+        if (isset($_SESSION['email'])) {
+            $email = $_SESSION['email'];
+            ?>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
+                        <?php
+                        if (getPermissions($email) == 1) {
+                            print '<li><a href="../driver/">Driver</a>';
+                            print '<li><a href="../admin/">Admin</a>';
+                        } else if (getPermissions($email) == 2) {
+                            print '<li><a href="../driver/">Driver</a>';
+                        }
+                        ?>
+
+                    </li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../register/">Register</a></li>
+                    <li><a href="../login/">Login</a></li>
+                </ul>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</nav>
+
 
 <?php
-
 if (isset($_SESSION['email-unverified'])) {
-    print '<div class="alert-danger">Please check your mail to activate your account!</div>';
+    print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
+
 
 if (isset($_POST['sendButton'])) {
     if (isset($_SESSION['email'])) {
@@ -136,7 +92,7 @@ if (isset($_POST['sendButton'])) {
             $sql2 = "INSERT INTO project_requests (email, address)VALUES('$requestEmail', '$requestAddress')";
             if (mysqli_query($conn, $sql2)) {
                 print '
-                                <button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>
+            <button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>
             <div class="alert alert-success" role="alert">Successfully requested!</div>';
             }
         }

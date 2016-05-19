@@ -2,19 +2,21 @@
 <html>
 <head>
     <meta>
-    <title>Search</title>
+    <title>Edit</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
+
     <style>
         body {
-            background: url('../media/bg.png') no-repeat center center fixed;
+            background: url('../media/bg.png') no-repeat;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
         }
+
     </style>
     <script type="text/javascript">
         function unreadonly1() {
@@ -86,9 +88,12 @@ if (isset($_SESSION['email'])) {
                     <a class="navbar-brand"> <span class="glyphicon glyphicon-user"
                                                    aria-hidden="true"></span> Admin Page</a>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="admin_search.php">Search</a></li>
+                        <li class="active"><a href="admin_search.php">Search</a></li>
                         <li><a href="admin_process_requests.php">Process Requests</a></li>
                         <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
+                        <li><a href="admin_add_driver.php">Add Driver</a></li>
+                        <li><a href="admin_view_drivers.php">View Drivers</a></li>
+
                     </ul>
 
                 </div>
@@ -123,7 +128,6 @@ if (isset($_SESSION['email'])) {
             <form class="form-horizontal" style="max-width:500px;" action="admin_edit_proc.php" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newid"> ID</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newid" value="<?php echo $oldid; ?>"
                                id="newid"
@@ -135,7 +139,6 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newfirstname">First Name</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newfirstname"
                                value="<?php echo $oldfirstname; ?>" id="newfirstname" onblur="readonlyon(this)">
@@ -145,7 +148,6 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newlastname">Last Name</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newlastname"
                                value="<?php echo $oldlastname; ?>"
@@ -156,7 +158,6 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newemail">Email address</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="email" class="form-control" name="newemail"
                                value="<?php echo $oldemail; ?>"
@@ -168,7 +169,6 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Phone Number</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newphonenumber"
                                value="<?php echo $oldphonenumber; ?>" id="newphonenumber" onblur="readonlyon(this)">
@@ -180,7 +180,6 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Permissions</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newpermissions"
                                value="<?php echo $oldpermissions; ?>" id="newpermissions" onblur="readonlyon(this)">
@@ -192,7 +191,6 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newaddress">Address</label>
-
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newaddress"
                                value="<?php echo $oldaddress; ?>"

@@ -4,7 +4,8 @@
  * Date: 5/14/16
  */
 
-include('../config.php');
+
+//include('../config.php');
 
 function getPermissions($email)
 {
@@ -31,6 +32,17 @@ function getPermissions($email)
     } else {
         return -1;
     }
+}
+
+function getTasksAtm($email)
+{
+    global $conn;
+    $sql = "SELECT * FROM project_requests_processing WHERE driver_email= '$email'";
+
+    $result = mysqli_query($conn, $sql);
+    $rowcount = mysqli_num_rows($result);
+    return $rowcount;
+
 }
 
 function checkAvailability($email)

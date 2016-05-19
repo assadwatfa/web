@@ -2,10 +2,9 @@
 <html>
 <head>
     <meta>
-    <title>Green Leb - Register</title>
-
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
 
 
@@ -17,16 +16,34 @@
 //    header('location: ../profile/');
 //} else {
 //    ?>
-<ul class="nav">
-    <li class="logo">Green Lebanon</li>
-    <li><a href="../index.php">Lobby</a></li>
-    <li><a href="../requests">Requests</a></li>
-    <li><a href="../login">Login</a></li>
-    <li class="active"><a href="">Register</a></li>
-    <!--        <li style="float:right"><a href="profile.php">Profile</a></li>-->
-    <!--        <li style="float:right"><a href="settings.php">Settings</a></li>-->
-</ul>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"> <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                Green Leb</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../requests/">Requests</a></li>
+                <li><a href="../education/">Education</a></li>
+                <li><a href="../help/">Help</a></li>
+            </ul>
 
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../register/">Register</a></li>
+                <li><a href="../login/">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <br/><br/><br/><br/>
 
@@ -66,20 +83,21 @@ if (isset($_GET['verification_code']) && isset($_GET['email'])) {
                 if (isset($_SESSION['email'])) {
                     session_destroy();
                 }
-                print "Account successfully activated.<br/>";
-                print "Click <a href='../login'>here</a> to log in.<br/>";
+                print '<div class="alert alert-success" role="alert" style="text-align: center">Account successfully activated.<br/>
+                       Click <a href="../login">here</a> to log in.
+                    </div>';
             } else {
-                print "Something went wrong with deleting data. <br/>";
+                print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Something went wrong with deleting data.</div>';
             }
         } else {
-            print "Something went wrong with inserting data. <br/>";
+            print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Something went wrong with inserting data.</div>';
         }
 
     } else {
-        print "Verification code was not found in database. <br/>";
+        print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Verification code was not found in database!</div>';
     }
 } else {
-    print "Please enter a valid verification code & email.<br/>";
+    print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please enter a valid verification code & email!</div>';
 }
 //}
 

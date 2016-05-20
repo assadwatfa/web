@@ -77,54 +77,36 @@ if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
 
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    if (checkUserRequest($email) != 1) {
+        ?>
+        <form action="index.php" method="post">
+            <button name="sendButton" type="submit" class="btn btn-success center-block btn-lg">
+                Request
+            </button>
+            <br/>
+        </form>
+        <?php
+        if (isset($_POST['sendButton'])) {
+            $sql = "SELECT * FROM project_users WHERE email= '$email'";
+            if ($result = mysqli_query($conn, $sql)) {
+                $rowcount = mysqli_num_rows($result);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-if (isset($_POST['sendButton'])) {
-    if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-        $sql = "SELECT * FROM project_users WHERE email= '$email'";
-        if ($result = mysqli_query($conn, $sql)) {
-            $rowcount = mysqli_num_rows($result);
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                $requestEmail = $row['email'];
+                $requestAddress = $row['address'];
 
 
-            $requestEmail = $row['email'];
-            $requestAddress = $row['address'];
-
-
-            $sql2 = "INSERT INTO project_requests (email, address)VALUES('$requestEmail', '$requestAddress')";
-            if (mysqli_query($conn, $sql2)) {
-                print '
-            <button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>
-            <div class="alert alert-success" role="alert">Successfully requested!</div>';
+                $sql2 = "INSERT INTO project_requests (email, address)VALUES('$requestEmail', '$requestAddress')";
+                if (mysqli_query($conn, $sql2)) {
+                    print '<div class="alert alert-success" role="alert">Successfully requested!</div>';
+                }
             }
         }
-    }
-} else {
-    if (isset($_SESSION['email'])) {
-        $email = $_SESSION['email'];
-        if (checkUserRequest($email) != 1) {
-            ?>
-            <form action="index.php" method="post">
-                <button name="sendButton" type="submit" class="btn btn-success center-block btn-lg">
-                    Request
-                </button>
-            </form>
-
-            <br/>
-            <?php
-        } else {
-            ?>
-            <button type="button" class="btn btn-success disabled center-block btn-lg">
-                Request
-            </button><br/>
-            <?php
-        }
     } else {
-        ?>
-        <button type="button" class="btn btn-success disabled center-block btn-lg">
-            Request
-        </button><br/>
-        <?php
+        print '<button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>';
     }
 }
 

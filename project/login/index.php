@@ -52,7 +52,8 @@ if (isset($_SESSION['email'])) {
 
     <br/><br/><br/><br/>
     <form method="post" action="login_handler.php">
-        <div class="form-group">
+        <div class="form-group col-xs-3"
+             style="background-color: white; border-radius: 25px; text-align:center; margin-left: 20%">
             <h2 class="form-heading">Login page</h2>
             <input type="text" placeholder="Enter your e-mail" name="email" id="email" class="form-control">
 
@@ -60,10 +61,8 @@ if (isset($_SESSION['email'])) {
             <input type="password" placeholder="Enter your password" name="password"
                    class="form-control">
             <br/>
-        </div>
-
-        <div style="position:relative; left:90px;top:0px;">
             <button type="submit" class="button-primary">Login</button>
+
         </div>
     </form>
     <?php

@@ -128,7 +128,7 @@ if (isset($_POST['sendButton'])) {
 
 
 ?>
-<table class="table table-hover table-striped">
+<table class="table table-striped table-hover" style="background-color: inherit">
     <tr>
         <th>Address</th>
         <th>User e-mail</th>

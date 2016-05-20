@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta>
-    <title>Driver</title>
+    <title>Tasks Done</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -25,6 +25,7 @@
 <?php
 
 session_start();
+
 include('../config.php');
 include('../nodes/index.php');
 
@@ -46,7 +47,7 @@ if (getPermissions($email) == 1 || getPermissions($email) == 2) {
                                            aria-hidden="true"></span> Driver Page</a>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="driver_tasks.php">Tasks</a></li>
-                <li><a href="driver_tasks_done.php">Tasks Accomplished</a></li>
+                <li class="active"><a href="driver_tasks_done.php">Tasks Accomplished</a></li>
             </ul>
 
         </div>
@@ -61,16 +62,42 @@ if (getPermissions($email) == 1 || getPermissions($email) == 2) {
 
 
 <?php
-$sql = "SELECT * FROM project_users WHERE email= '$email'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-$name = $row['firstname'];
-echo "<h1>Welcome Back $name</h1>";
-} else {
+$sql = "SELECT * FROM project_requests_done WHERE driver_email= '$email'";
+$result = mysqli_query($conn, $sql) or die("Connection failed: " . mysqli_connect_error());
+if ($result) {
+    $num_rows = mysqli_num_rows($result);
+    if ($num_rows > 0) {
+
+        print "<table class=\"table table-striped\"><tr>
+			<th>Address</th>
+			<th>User's Email</th>
+			<th>Date Done</th>
+			</tr>";
+        for ($row_num = $num_rows; $row_num >= 1; $row_num--) {
+            $row = mysqli_fetch_assoc($result);
+
+            print "<tr style='background-color: limegreen '>";
+            print "</td><td>" . $row["address"];
+            print "</td><td>" . $row["email"];
+            print "</td><td>" . $row["date_done"];
+            print "</td></tr>";
+
+        }
+        print "</tbody>";
+        print "</table>";
+    } else {
+        echo "<h2>You have not finished any tasks</h2>";
+    }
+}
+}
+
+else {
     print "You do not have permissions to access this page.<br/>";
 }
 
-} else {
+}
+
+else {
     header('location: ../login/');
 }
 ?>

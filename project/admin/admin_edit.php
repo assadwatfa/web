@@ -19,11 +19,7 @@
 
     </style>
     <script type="text/javascript">
-        function unreadonly1() {
-            var x = document.getElementById("newid");
-            x.readOnly = false;
-            x.focus();
-        }
+
         function unreadonly2(id) {
             var x = document.getElementById("newfirstname");
             x.readOnly = false;
@@ -116,7 +112,7 @@ if (isset($_SESSION['email'])) {
             $sql = "SELECT * FROM project_users WHERE email='$emailtoedit'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
-            $oldid = $row['id'];
+
             $oldfirstname = $row['firstname'];
             $oldlastname = $row['lastname'];
             $oldemail = $row['email'];
@@ -126,17 +122,7 @@ if (isset($_SESSION['email'])) {
             ?>
 
             <form class="form-horizontal" style="max-width:500px;" action="admin_edit_proc.php" method="post">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="newid"> ID</label>
-                    <div class="col-sm-10">
-                        <input readOnly=true type="text" class="form-control" name="newid" value="<?php echo $oldid; ?>"
-                               id="newid"
-                               onblur="readonlyon(this)">
-	   <span class="input-group-btn">
-	   <input class="btn btn-primary" type="button" value="Edit ID" onclick="unreadonly1();" id="idbutton">
-            </span>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newfirstname">First Name</label>
                     <div class="col-sm-10">

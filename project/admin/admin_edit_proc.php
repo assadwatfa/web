@@ -57,11 +57,7 @@ if (isset($_SESSION['email'])) {
         if ($_SESSION['emailtoedit']) {
             $emailtoedit = $_SESSION['emailtoedit'];
             $_SESSION['emailtoedit'] = "";
-            if (isset($_POST['newid'])) {
-                $newid = $_POST['newid'];
-            } else {
-                print "New id missing!<br/>";
-            }
+
 
             if (isset($_POST['newfirstname'])) {
                 $newfirstname = $_POST['newfirstname'];
@@ -99,8 +95,8 @@ if (isset($_SESSION['email'])) {
                 print "New address missing!<br/>";
             }
 
-            if (isset($_POST['newid']) && isset($_POST['newfirstname']) && isset($_POST['newlastname']) && isset($_POST['newemail']) && isset($_POST['newphonenumber']) && isset($_POST['newpermissions']) && isset($_POST['newaddress'])) {
-                $sql = "UPDATE project_users SET id='$newid',firstname='$newfirstname',lastname='$newlastname',email='$newemail',phone='$newphonenumber',permissions='$newpermissions',address='$newaddress' WHERE email='$emailtoedit'";
+            if (isset($_POST['newfirstname']) && isset($_POST['newlastname']) && isset($_POST['newemail']) && isset($_POST['newphonenumber']) && isset($_POST['newpermissions']) && isset($_POST['newaddress'])) {
+                $sql = "UPDATE project_users SET firstname='$newfirstname',lastname='$newlastname',email='$newemail',phone='$newphonenumber',permissions='$newpermissions',address='$newaddress' WHERE email='$emailtoedit'";
 
                 if (mysqli_query($conn, $sql)) {
                     echo "<h1>Record updated successfully</h1>";

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta>
-    <title>Search</title>
+    <title>View Drivers</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -36,10 +36,11 @@
                                            aria-hidden="true"></span> Admin Page</a>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="admin_search.php">Search</a></li>
-                <li><a href="admin_process_requests.php">Proccess Requests</a></li>
-                <li><a href="admin_view_processing_requests.php">Requests Proccessing</a></li>
+                <li><a href="admin_process_requests.php">Process Requests</a></li>
+                <li><a href="admin_view_processing_requests.php">Requests Processing</a></li>
                 <li><a href="admin_add_driver.php">Add Driver</a></li>
-                <li><a href="admin_view_drivers.php">View Drivers</a></li>
+                <li class="active"><a href="admin_view_drivers.php">View Drivers</a></li>
+
             </ul>
 
         </div>
@@ -53,34 +54,40 @@
 </nav>
 <?php
 session_start();
-
 include('../config.php');
 include('../nodes/index.php');
+$query = "SELECT * FROM project_users WHERE permissions='2'";
+$result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
+if ($result) {
 
-if (isset($_SESSION['email'])) {
-    $email_to_process = $_POST['email_to_process'];
-    $driver_to_assign = $_POST['selected_driver'];
-    $query = "INSERT INTO project_requests_processing(address, email) SELECT address,email FROM project_requests WHERE email = '$email_to_process'";
-    $result = mysqli_query($conn, $query) or die("Connection failed :Cannot  insert email to project_requests_proccesing: " . mysqli_connect_error());
-    $query2 = "UPDATE project_requests_processing SET driver_email='$driver_to_assign' WHERE email='$email_to_process'";
-    $result2 = mysqli_query($conn, $query2) or die("Connection failed :Cannot  insert drivers email to project_requests_proccesing: " . mysqli_connect_error());
-    if ($result && $result2) {
-        $query = "DELETE FROM project_requests where email = '$email_to_process'";
-        $result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
+    $num_rows = mysqli_num_rows($result);
+    if ($num_rows > 0) {
+        print "<table class=\"table table-striped\"><tr>
+			
 
-        if ($result)
-            echo "<h1>Request Successfully Processed</h1>";
-        ?>
-        </br>
-        <form style="float:left;" action="admin_process_requests.php" enctype="multipart/form-data" method="post"
-              align="center">
-            <button type="submit" class="btn btn-default btn-lg">Return</button>
-        </form>
-        <?php
-    } else
-        echo "Something went wrong";
-} else {
-    header('location: ../login/');
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Address</th>
+			<th>Tasks Atm</th>
+			<th>Date Joined</th>
+			</tr>";
+        for ($row_num = 1; $row_num <= $num_rows; $row_num++) {
+            $row = mysqli_fetch_assoc($result);
+            print "<tbody><tr>";
+            print "</td><td>" . $row["firstname"];
+            print "</td><td>" . $row["lastname"];
+            print "</td><td>" . $row["email"];
+            print "</td><td>" . $row["phone"];
+            print "</td><td>" . $row["address"];
+            print "</td><td>" . getTasksAtm($row["email"]);
+            print "</td><td>" . $row["date_joined"];
+            print "</td></tr>";
+        }
+        print "</tbody>";
+        print "</table>";
+    }
 }
 ?>
 </form>

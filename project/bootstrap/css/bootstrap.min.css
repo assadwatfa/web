@@ -11,7 +11,7 @@ html {
 
 body {
     margin: 0;
-    background: url('bg.png') no-repeat;
+    background: url('bg.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -6033,7 +6033,6 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-g
 .panel-group .panel-heading {
     border-bottom: 0
 }
-
 .panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body {
     border-top: 1px solid #ddd
 }

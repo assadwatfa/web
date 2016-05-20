@@ -8,6 +8,8 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="../bootstrap/js/bootstrap.js"></script>
+    <script type="text/JavaScript" src="functions.js"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -127,68 +129,42 @@ if (isset($_POST['sendButton'])) {
 }
 
 
+function checkUserRequest($email)
+{
+    global $conn;
+    $sql = "SELECT * FROM project_requests WHERE email= '$email'";
+    $result = mysqli_query($conn, $sql);
+    $rowcount = mysqli_num_rows($result);
+
+    $sql2 = "SELECT * FROM project_requests_processing WHERE email= '$email'";
+
+    $result2 = mysqli_query($conn, $sql2);
+    $rowcount2 = mysqli_num_rows($result2);
+
+    if ($rowcount > 0 || $rowcount2 > 0) {
+        return 1;
+    } else {
+        return -1;
+    }
+}
+
 ?>
-<table class="table table-striped table-hover" style="background-color: inherit">
-    <tr>
-        <th>Address</th>
-        <th>User e-mail</th>
-        <th>Driver e-mail</th>
-        <th>Date processing</th>
-    </tr>
-    <?php
+<div id="data">
+    <table class="table table-striped table-hover" style="background-color: white" id="myTable">
+        <tr>
+            <th>Address</th>
+            <th>User e-mail</th>
+            <th>Driver e-mail</th>
+            <th>Date processing</th>
+        </tr>
+        <script type="text/javascript">
+            //            setInterval(function () {
+            getData();
+            //            }, 5000);
+        </script>
+    </table>
+</div>
 
-
-    function checkUserRequest($email)
-    {
-        global $conn;
-        $sql = "SELECT * FROM project_requests WHERE email= '$email'";
-        $result = mysqli_query($conn, $sql);
-        $rowcount = mysqli_num_rows($result);
-
-        $sql2 = "SELECT * FROM project_requests_processing WHERE email= '$email'";
-
-        $result2 = mysqli_query($conn, $sql2);
-        $rowcount2 = mysqli_num_rows($result2);
-
-        if ($rowcount > 0 || $rowcount2 > 0) {
-            return 1;
-        } else {
-            return -1;
-        }
-    }
-
-
-    function displayRequests()
-    {
-        global $conn;
-        $sql = "SELECT * FROM project_requests_processing";
-
-        if ($result = mysqli_query($conn, $sql)) {
-            $rowcount = mysqli_num_rows($result);
-            if ($rowcount > 0) {
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $rows[] = $row;
-                }
-
-                foreach ($rows as $row) {
-                    echo
-                        "<tr>
-                    <td> " . $row['address'] . " </td>
-                    <td> " . $row['email'] . "</td>
-                    <td> " . $row['driver_email'] . "</td>
-                    <td> " . $row['date_processing'] . "</td>
-                  </tr>";
-                }
-            }
-        } else {
-            print "Couldn't fetch data.<br/>";
-        }
-    }
-
-    displayRequests();
-    ?>
-
-</table>
 
 </body>
 </html>

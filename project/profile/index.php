@@ -34,6 +34,10 @@ function displayInformation($email)
 
     if ($rowcount > 0) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
+<div class="form-group col-xs-3"
+     style="background-color: white; border-radius: 25px; text-align:center; margin-left: 20%;text-weight:bold;font-size: medium">
+    <?php
         print "<img src='" . get_gravatar($_SESSION['email'], 80, 'mm') . "'/><br/>";
         print "First name: " . $row['firstname'] . " <br/>";
         print "Last name: " . $row['lastname'] . " <br/>";
@@ -49,7 +53,7 @@ function displayInformation($email)
         print "E-mail: " . $row['email'] . " <br/>";
         print "Phone number: " . $row['phone'] . " <br/>";
         print "Address: " . $row['address'] . " <br/>";
-        print "Date joined: " . $row['date_joined'] . " <br/>";
+        print "Date joined: " . $row['date_joined'] . " <br/></div>";
     }
 }
 

@@ -75,7 +75,7 @@ if (isset($_SESSION['email'])) {
                         $_SESSION['emailtodelete'] = $email;
                         $_SESSION['emailtoedit'] = $email;
                         print "<table class=\"table table-striped\"><tr>
-			<th>ID</th>
+			
 
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -89,7 +89,7 @@ if (isset($_SESSION['email'])) {
                         for ($row_num = 1; $row_num <= $num_rows; $row_num++) {
                             $row = mysqli_fetch_assoc($result);
                             print "<tbody><tr>";
-                            print "</td><td>" . $row["id"];
+
 
                             print "</td><td>" . $row["firstname"];
                             print "</td><td>" . $row["lastname"];

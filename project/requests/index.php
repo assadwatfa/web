@@ -108,6 +108,8 @@ if (isset($_SESSION['email'])) {
     } else {
         print '<button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>';
     }
+} else {
+    print '<button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>';
 }
 
 

@@ -35,7 +35,7 @@
             ?>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             Profile</a></li>
                     <?php
 

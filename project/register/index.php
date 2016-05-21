@@ -75,7 +75,7 @@ if (isset($_SESSION['email'])) {
                    onchange="validatePhoneNumber();validateFunctions();">
             <label style="display: none" for="phonenumber" class="error" id="phonenumbererror">Please enter a valid
                 Phone Number(XXxxxxxx).</label>
-            <input style="display: none" type="address" placeholder="Enter your address" name="address" id="address"
+            <input type="address" placeholder="Enter your address" name="address" id="address"
                    class="form-control"
                    onchange="validateAddress();validateFunctions();">
             <label style="display: none" for="address" class="error" id="addresserror">Please enter a valid

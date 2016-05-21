@@ -8,7 +8,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="../bootstrap/js/bootstrap.js"></script>
-    <script type="text/JavaScript" src="functions.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
 
 </head>
 <body>
@@ -133,20 +133,12 @@ function checkUserRequest($email)
 }
 
 ?>
-<div id="data">
-    <table class="table table-striped table-hover" style="background-color: white" id="myTable">
-        <tr>
-            <th>Address</th>
-            <th>User e-mail</th>
-            <th>Driver e-mail</th>
-            <th>Date processing</th>
-        </tr>
-        <script type="text/javascript">
-            //            setInterval(function () {
+<div id="requests-data">
+    <script type="text/javascript">
+        setInterval(function () {
             getData();
-            //            }, 5000);
-        </script>
-    </table>
+        }, 2500);
+    </script>
 </div>
 
 

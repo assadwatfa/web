@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta>
-    <title></title>
+    <title>Green Leb - Recover</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.js"></script>
 </head>
@@ -36,7 +36,7 @@ if (isset($_SESSION['email'])) {
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="../requests/">Requests</a></li>
                     <li><a href="../education/">Education</a></li>
-                    <li><a href="../help/">Help</a></li>
+                    <li><a href="../contactus/">Contact Us</a></li>
                 </ul>
 
             </div>

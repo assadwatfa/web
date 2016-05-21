@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>
-
-    </title>
+    <title>Green Leb - Requests</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
@@ -28,7 +26,7 @@
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../requests/">Requests</a></li>
                 <li><a href="../education/">Education</a></li>
-                <li><a href="../help/">Help</a></li>
+                <li><a href="../contactus/">Contact Us</a></li>
             </ul>
 
         </div>
@@ -43,16 +41,15 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
-                        <?php
-                        if (getPermissions($email) == 1) {
-                            print '<li><a href="../driver/">Driver</a>';
-                            print '<li><a href="../admin/">Admin</a>';
-                        } else if (getPermissions($email) == 2) {
-                            print '<li><a href="../driver/">Driver</a>';
-                        }
-                        ?>
-
                     </li>
+                    <?php
+                    if (getPermissions($email) == 1) {
+                        print '<li><a href="../driver/">Driver</a>';
+                        print '<li><a href="../admin/">Admin</a>';
+                    } else if (getPermissions($email) == 2) {
+                        print '<li><a href="../driver/">Driver</a>';
+                    }
+                    ?>
                     <li><a href="../logout.php">Logout</a></li>
                 </ul>
             </div>

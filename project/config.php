@@ -9,6 +9,7 @@ $dbhost = "localhost";
 $dbusername = "";
 $dbpassword = "";
 $dbname = "";
+$root = "";
 $conn = mysqli_connect($dbhost, $dbusername, $dbpassword);
 if ($conn) {
     mysqli_select_db($conn, $dbname);

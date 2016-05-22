@@ -165,7 +165,7 @@ if (isset($_SESSION['email'])) {
                         mysqli_query($conn, $sql);
 
                         $message = "Welcome to Green Leb " . $firstname . "\r\n";
-                        $message .= "Go to http://team-hha.com/baucsteam/register/verify.php?verification_code=$verification_code&email=$email to activate your account. \r\n";
+                        $message .= "Go to " + $root + "/register/verify.php?verification_code=$verification_code&email=$email to activate your account. \r\n";
                         mail($email, 'Green Leb - Account Activation', $message);
 
                         print "Successfully registered <br/>";

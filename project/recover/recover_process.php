@@ -72,7 +72,7 @@ if (isset($_SESSION['email'])) {
                 print "Click <a href='recover_continue.php'>here</a> to process recovering your account. <br/>";
 
                 $message = "Your recovery code is " . $code . "\r\n";
-                $message .= "Go to http://team-hha.com/baucsteam/recover/recover_continue.php to process your password changes.\r\n";
+                $message .= "Go to " + $root + "/recover/recover_continue.php to process your password changes.\r\n";
                 mail($email, 'Green Leb - Password Recovery', $message);
             } else {
                 print "Couldn't connect.<br/>";

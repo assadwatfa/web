@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Home</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -35,7 +36,8 @@
             ?>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
+                    <li><a href="./profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            Profile</a>
                     </li>
                     <?php
                     if (getPermissions($email) == 1) {

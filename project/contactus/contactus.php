@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Contact Us</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -68,29 +69,41 @@
 if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
-?>
-<?php
+
+
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $to = "assad_watfa@hotmail.com";
 if (isset($_POST['subject'])) {
     $subject = $_POST['subject'];
 } else {
-    echo "Please Enter a Subject";
+    print "Please Enter a Subject.<br/>";
 }
+
+if (!isset($_SESSION['email'])) {
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
+    } else {
+        print "Please Enter an E-mail.<br/>";
+    }
+}
+
 if (isset($_POST['message'])) {
     $message = $_POST['message'];
 } else {
-    echo "Please Enter a Message";
-}
-if (isset($_POST['subject']) && isset($_POST['message'])) {
-    mail($to, "From:$email,Subject:$subject", $message);
-    echo "<h2>Message Sent</h2></br>";
-    echo "<h2>We will be in contact soon!</h2>";
-
+    print "Please Enter a Message. <br/>";
 }
 
-
+if (isset($_POST['subject']) && isset($_POST['message']) && (isset($_SESSION['email']) || isset($_POST['email']))) {
+    if (!empty($_POST['subject']) && !empty($_POST['message'])) {
+        mail($to, "From:$email,Subject:$subject", $message);
+        print "<h2>Message Sent</h2></br>";
+        print "<h2>We will be in contact soon!</h2>";
+        print "<h2>Go back by clicking <a href='../contactus/'>here</a>.</h2>";
+    } else {
+        print "<h2>Some fields are missing.</h2> </br>";
+    }
+}
 ?>
 
 

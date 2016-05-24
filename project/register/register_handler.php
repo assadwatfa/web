@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta>
     <title>Green Leb - Registration</title>

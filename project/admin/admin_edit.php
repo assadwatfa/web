@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-
-    <style>
-        body {
-            background: url('../media/bg.png') no-repeat;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-
-    </style>
     <script type="text/javascript">
 
         function unreadonly2(id) {
@@ -125,6 +114,7 @@ if (isset($_SESSION['email'])) {
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newfirstname">First Name</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newfirstname"
                                value="<?php echo $oldfirstname; ?>" id="newfirstname" onblur="readonlyon(this)">
@@ -134,6 +124,7 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newlastname">Last Name</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newlastname"
                                value="<?php echo $oldlastname; ?>"
@@ -144,6 +135,7 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="newemail">Email address</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="email" class="form-control" name="newemail"
                                value="<?php echo $oldemail; ?>"
@@ -155,6 +147,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Phone Number</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newphonenumber"
                                value="<?php echo $oldphonenumber; ?>" id="newphonenumber" onblur="readonlyon(this)">
@@ -166,6 +159,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newphonenumber">Permissions</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newpermissions"
                                value="<?php echo $oldpermissions; ?>" id="newpermissions" onblur="readonlyon(this)">
@@ -177,6 +171,7 @@ if (isset($_SESSION['email'])) {
                 <div class="form-group">
 
                     <label class="col-sm-2 control-label" for="newaddress">Address</label>
+
                     <div class="col-sm-10">
                         <input readOnly=true type="text" class="form-control" name="newaddress"
                                value="<?php echo $oldaddress; ?>"

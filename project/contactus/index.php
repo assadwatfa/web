@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Contact Us</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -73,6 +74,14 @@ if (isset($_SESSION['email-unverified'])) {
     <div class="form-group col-xs-4" style="background-color: white; border-radius: 25px; margin-left: 10%">
         <h2 class="form-heading ">Contact Us</h2>
         <input type="text" placeholder="Enter your Subject" name="subject" id="subject" class="form-control">
+        <?php
+        if (!isset($_SESSION['email'])) {
+            ?>
+            <input type="email" placeholder="Enter your E-mail" name="email" id="email" class="form-control">
+
+            <?php
+        }
+        ?>
         <textarea style="max-width: 100%;min-width:100%;height: 100px;" placeholder="Enter your Message" name="message"
                   id="message" class="form-control"></textarea>
 

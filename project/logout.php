@@ -19,6 +19,7 @@ if (isset($_SESSION['email'])) {
 
 
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Logout</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">

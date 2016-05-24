@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Education</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">

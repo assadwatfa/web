@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-
-    <style>
-        body {
-            background: url('../media/bg.png') no-repeat;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
-
 </head>
 
 
@@ -68,6 +57,7 @@ if (isset($_SESSION['email'])) {
 
         <div style="margin-left:100px;margin-top:100px;">
             <h1>Search for users in the database</h1>
+
             <form class="form-inline" action="admin_search_proc.php" method="POST">
                 <div class="form-group">
                     <label for="emailsearch">Search</label>

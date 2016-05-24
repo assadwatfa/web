@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Green Leb - Requests</title>
     <!-- Latest compiled and minified CSS -->

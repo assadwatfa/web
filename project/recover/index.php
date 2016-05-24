@@ -50,14 +50,12 @@ if (isset($_SESSION['email'])) {
     </nav>
 
     <form method="post" action="recover_process.php">
-        <div class="form-group">
+        <div class="form-group col-xs-4">
             <h2 class="form-heading">Recover page</h2>
             <input type="text" placeholder="Enter your e-mail" name="email" id="email" class="form-control">
             <br/>
-        </div>
+            <button class="btn btn-primary" type="submit" class="button-primary">Recover</button>
 
-        <div style="position:relative; left:90px;top:0px;">
-            <button type="submit" class="button-primary">Recover</button>
         </div>
     </form>
 

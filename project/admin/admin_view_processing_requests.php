@@ -5,18 +5,7 @@
     <title>Processing Requests</title>
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-
-
-    <style>
-        body {
-            background: url('../media/bg.png') no-repeat;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 

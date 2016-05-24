@@ -87,7 +87,6 @@ function displayInformation($email)
     print "<td>" . $row['date_joined'] . "</td>";
     print "</tr>";
 
-    print "<tr><td colspan='2'>Click <a href='../logout.php'>here</a> to logout.</td></tr>";
     print "<tr><td colspan='2'>Click <a href='change_password.php'>here</a> to change password.</td></tr>";
     print "<tr><td colspan='2'>Click <a href='change_info.php'>here</a> to change your information.</td></tr>";
     print "<tr><td><input type='button' class='btn btn-primary' value='Show my requests' onclick='getData();'></td>";

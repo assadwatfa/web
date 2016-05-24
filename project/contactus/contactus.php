@@ -4,6 +4,7 @@
     <title>Green Leb - Contact Us</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -105,6 +106,17 @@ if (isset($_POST['subject']) && isset($_POST['message']) && (isset($_SESSION['em
 }
 ?>
 
+<div class="navbar navbar-fixed-bottom">
+    <div id="footer-data" style="text-align:center">
+        <a href="https://github.com/BAUCSTeam" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+        <a href="https://facebook.com/BAUCSTeam" target="_blank"><i class="fa fa-facebook-square fa-3x"
+                                                                    aria-hidden="true"></i></a>
+        <a href="https://instagram.com/BAUCSTeam" target="_blank"><i class="fa fa-instagram fa-3x"
+                                                                     aria-hidden="true"></i></a>
+        <a href="https://twitter.com/BAUCSTeam" target="_blank"><i class="fa fa-twitter-square fa-3x"
+                                                                   aria-hidden="true"></i></a>
+    </div>
+</div>
 
 </body>
 </html>

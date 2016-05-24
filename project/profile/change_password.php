@@ -5,6 +5,7 @@
     <title>Green Leb - Change Password</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -69,7 +70,7 @@ if (!isset($_SESSION['email'])) {
     ?>
 
     <form method="post" action="change_password_handler.php">
-        <div class="form-group">
+        <div class="form-group col-xs-4">
             <h2 class="form-heading">Change password</h2>
             <input type="password" placeholder="Enter your current password" name="currentpassword" id="currentpassword"
                    class="form-control">
@@ -81,16 +82,25 @@ if (!isset($_SESSION['email'])) {
             <input type="password" placeholder="Confirm your new password" name="password2"
                    class="form-control">
             <br/>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
-        <div style="position:relative; left:90px;top:0px;">
-            <button type="submit" class="button-primary">Login</button>
-        </div>
     </form>
 
     <?php
 }
 ?>
 
+<div class="navbar navbar-fixed-bottom">
+    <div id="footer-data" style="text-align:center">
+        <a href="https://github.com/BAUCSTeam" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+        <a href="https://facebook.com/BAUCSTeam" target="_blank"><i class="fa fa-facebook-square fa-3x"
+                                                                    aria-hidden="true"></i></a>
+        <a href="https://instagram.com/BAUCSTeam" target="_blank"><i class="fa fa-instagram fa-3x"
+                                                                     aria-hidden="true"></i></a>
+        <a href="https://twitter.com/BAUCSTeam" target="_blank"><i class="fa fa-twitter-square fa-3x"
+                                                                   aria-hidden="true"></i></a>
+    </div>
+</div>
 </body>
 </html>

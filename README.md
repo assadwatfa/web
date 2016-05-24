@@ -3,8 +3,5 @@
 <p>Documentation is available on the <a href='https://github.com/BAUCSTeam/web/wiki'>Github Wiki</a></p>
 
 
-## Developers
-<p>Hassan J. & Assad W.</p>
-
-## Designers
-<p>Hassan A. & Mohammad I.</p>
+## Developers & Designers
+<p>Hassan J. & Assad W. & Hassan A. & Mohammad I.</p>

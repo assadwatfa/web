@@ -4,4 +4,9 @@
 
 
 ## Developers & Designers
-<p>Hassan J. & Assad W. & Hassan A. & Mohammad I.</p>
+<ol>
+  <li>Hassan J.</li>
+  <li>Assad W.</li>
+  <li>Hassan A.</li>
+  <li>Mohammad I.</li>
+</ol>

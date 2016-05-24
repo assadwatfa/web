@@ -45,7 +45,7 @@ function displayInformation($email)
     ?>
 
 
-    <div class="form-group col-xs-3"
+    <div class="form-group col-xs-4"
          style="margin-left: 20%;text-weight:bold;font-size: medium">
 
     <?php
@@ -57,32 +57,32 @@ function displayInformation($email)
     print "<table>";
     print "<tr><td colspan='2'><img src='" . get_gravatar($_SESSION['email'], 80, 'mm') . "'</td></tr>";
     print "<tr>";
-    print "<td>First name</td>";
+    print "<td>First name:</td>";
     print "<td>" . $row['firstname'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Last name</td>";
+    print "<td>Last name:</td>";
     print "<td>" . $row['lastname'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>E-mail</td>";
+    print "<td>E-mail:</td>";
     print "<td>" . $row['email'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Phone</td>";
+    print "<td>Phone:</td>";
     print "<td>" . $row['phone'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Address</td>";
+    print "<td>Address:</td>";
     print "<td>" . $row['address'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Date joined</td>";
+    print "<td>Date joined:</td>";
     print "<td>" . $row['date_joined'] . "</td>";
     print "</tr>";
 

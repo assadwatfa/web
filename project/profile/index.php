@@ -5,6 +5,7 @@
     <title>Green Leb - Profile</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="functions.js"></script>
     <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
     <style type="text/css">
         img {
@@ -12,7 +13,7 @@
         }
 
         td {
-            width: 750px;
+            width: 450px;
         }
 
     </style>
@@ -54,41 +55,43 @@ function displayInformation($email)
     } else if ($rowcount2 > 0) {
         $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
     }
-    print "<table>";
+    print "<table class='td-user-data'>";
     print "<tr><td colspan='2'><img src='" . get_gravatar($_SESSION['email'], 80, 'mm') . "'</td></tr>";
     print "<tr>";
-    print "<td>First name:</td>";
+    print "<td style='font-weight: bold'>First name:</td>";
     print "<td>" . $row['firstname'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Last name:</td>";
+    print "<td style='font-weight: bold'>Last name:</td>";
     print "<td>" . $row['lastname'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>E-mail:</td>";
+    print "<td style='font-weight: bold'>E-mail:</td>";
     print "<td>" . $row['email'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Phone:</td>";
+    print "<td style='font-weight: bold'>Phone:</td>";
     print "<td>" . $row['phone'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Address:</td>";
+    print "<td style='font-weight: bold'>Address:</td>";
     print "<td>" . $row['address'] . "</td>";
     print "</tr>";
 
     print "<tr>";
-    print "<td>Date joined:</td>";
+    print "<td style='font-weight: bold'>Date joined:</td>";
     print "<td>" . $row['date_joined'] . "</td>";
     print "</tr>";
 
     print "<tr><td colspan='2'>Click <a href='../logout.php'>here</a> to logout.</td></tr>";
     print "<tr><td colspan='2'>Click <a href='change_password.php'>here</a> to change password.</td></tr>";
     print "<tr><td colspan='2'>Click <a href='change_info.php'>here</a> to change your information.</td></tr>";
+    print "<tr><td><input type='button' class='btn btn-primary' value='Show my requests' onclick='getData();'></td>";
+    print "<td><input type='button' class='btn btn-primary' value='Hide my requests' onclick='hideData();'></td></tr>";
     print "<table>";
     ?>
 
@@ -147,8 +150,17 @@ if (isset($_SESSION['email'])) {
         print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
     }
 
-
     displayInformation($_SESSION['email']);
+
+    ?>
+
+    <div id="requests-data">
+        <table id="myTable">
+        </table>
+    </div>
+
+
+    <?php
 
 } else {
     header('location: ../login/');

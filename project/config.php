@@ -5,11 +5,11 @@
  */
 
 
-$dbhost = "localhost";
-$dbusername = "wwwhqbju_project";
-$dbpassword = "st37CWna2f22K3auPS";
-$dbname = "wwwhqbju_project";
-$root = "http://team-hha.com/baucsteam";
+$dbhost = "";
+$dbusername = "";
+$dbpassword = "";
+$dbname = "";
+$root = "";
 $conn = mysqli_connect($dbhost, $dbusername, $dbpassword);
 if ($conn) {
     mysqli_select_db($conn, $dbname);

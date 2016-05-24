@@ -61,7 +61,7 @@ if (isset($_SESSION['email'])) {
             <input type="password" placeholder="Enter your password" name="password"
                    class="form-control">
             <br/>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="button-primary">Login</button>
 
         </div>
     </form>

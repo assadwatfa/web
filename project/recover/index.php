@@ -54,8 +54,7 @@ if (isset($_SESSION['email'])) {
             <h2 class="form-heading">Recover page</h2>
             <input type="text" placeholder="Enter your e-mail" name="email" id="email" class="form-control">
             <br/>
-            <button class="btn btn-primary" type="submit" class="button-primary">Recover</button>
-
+            <button type="submit" class="btn btn-primary">Recover</button>
         </div>
     </form>
 

@@ -1,4 +1,9 @@
 <?php
+/**
+ * User: Hassan J.
+ * Date: 5/20/16
+ */
+
 include('../config.php');
 if (isset($_GET['data'])) {
     $data = $_GET['data'];

@@ -89,9 +89,9 @@ if ($result) {
         for ($row_num = 1; $row_num <= $num_rows; $row_num++) {
             $row = mysqli_fetch_assoc($result);
             echo "<tr> <td ><div style='background-color: gainsboro;border-radius: 20px'><p style='margin-left: 20px;font-size: medium'><b>Rating:</b> " . $row['rating'] . "/5</br>
-        From:" . $row['email'] . "
+        From: " . $row['email'] . "
         </br>
-        On:" . $row['date_reviewed'] . "</p></div>";
+        On: " . $row['date_reviewed'] . "</p></div>";
             echo "<div style='background-color: white;border-radius: 50px;'><p style='margin-left: 20px;font-size: large'>" . $row['comment'] . "</p></div></td></tr>";
 
         }

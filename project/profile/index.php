@@ -153,10 +153,8 @@ if (isset($_SESSION['email'])) {
     displayInformation($_SESSION['email']);
 
     ?>
-
+    <br/>
     <div id="requests-data">
-        <table id="myTable">
-        </table>
     </div>
 
 

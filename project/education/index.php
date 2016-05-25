@@ -74,6 +74,7 @@ if (isset($_SESSION['email-unverified'])) {
 ?>
 
 <div id="education-data" align="center">
+    <h2><i class="fa fa-recycle" aria-hidden="true"></i> Importance of Recycling</h2>
     <object height="350" width="475">
         <param name="movie" value="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1"/>
         <embed height="350" src="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1" type="application/x-shockwave-flash"

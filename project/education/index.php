@@ -72,6 +72,14 @@ if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
 ?>
+
+<div id="education-data" align="center">
+    <object height="350" width="425">
+        <param name="movie" value="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1"/>
+        <embed height="350" src="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1" type="application/x-shockwave-flash"
+               width="425"></embed>
+    </object>
+</div>
 <div class="navbar navbar-fixed-bottom">
     <div id="footer-data" style="text-align:center">
         <a href="https://github.com/BAUCSTeam" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>

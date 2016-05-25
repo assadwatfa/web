@@ -74,10 +74,10 @@ if (isset($_SESSION['email-unverified'])) {
 ?>
 
 <div id="education-data" align="center">
-    <object height="350" width="425">
+    <object height="350" width="475">
         <param name="movie" value="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1"/>
         <embed height="350" src="http://www.youtube.com/v/Jixu9zCF0a0&autoplay=1" type="application/x-shockwave-flash"
-               width="425"></embed>
+               width="475"></embed>
     </object>
 </div>
 <div class="navbar navbar-fixed-bottom">

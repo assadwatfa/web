@@ -38,7 +38,7 @@
             ?>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             Profile</a>
                     </li>
                     <?php
@@ -71,9 +71,10 @@
 if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
-?>
-<?php
 
+?>
+
+<?php
 $query = "SELECT * FROM project_reviews ORDER BY date_reviewed DESC LIMIT 20";
 $result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
 if ($result) {

@@ -30,7 +30,7 @@ if (isset($_GET['data'])) {
             foreach ($return_array0 as $row) {
                 print "<tr>";
                 print "<td>" . $row['address'] . "</td>";
-                print "<td>" . $row['email'] . "</td>";
+                print "<td> Private </td>";
                 print "<td> Not assigned </td>";
                 print "<td> Requested </td>";
                 print "<td>" . $row['date_added'] . "</td>";
@@ -53,7 +53,7 @@ if (isset($_GET['data'])) {
             foreach ($return_array1 as $row) {
                 print "<tr>";
                 print "<td>" . $row['address'] . "</td>";
-                print "<td>" . $row['email'] . "</td>";
+                print "<td> Private </td>";
                 print "<td>" . $row['driver_email'] . "</td>";
                 print "<td> Processing </td>";
                 print "<td>" . $row['date_processing'] . "</td>";
@@ -77,7 +77,7 @@ if (isset($_GET['data'])) {
             foreach ($return_array2 as $row) {
                 print "<tr>";
                 print "<td>" . $row['address'] . "</td>";
-                print "<td>" . $row['email'] . "</td>";
+                print "<td> Private </td>";
                 print "<td>" . $row['driver_email'] . "</td>";
                 print "<td> Done </td>";
                 print "<td>" . $row['date_done'] . "</td>";

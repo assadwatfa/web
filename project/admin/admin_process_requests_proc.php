@@ -35,7 +35,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                </li>
+                <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        Profile</a></li>
                 <li><a href="../logout.php">Logout</a></li>
             </ul>
         </div>

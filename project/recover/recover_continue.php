@@ -36,6 +36,7 @@ if (isset($_SESSION['email'])) {
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="../requests/">Requests</a></li>
+                    <li><a href="../reviews/">Reviews</a></li>
                     <li><a href="../education/">Education</a></li>
                     <li><a href="../contactus/">Contact Us</a></li>
                 </ul>

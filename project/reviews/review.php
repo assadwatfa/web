@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Green Leb - Requests</title>
-    <!-- Latest compiled and minified CSS -->
+    <title>Green Leb - Home</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
     <script src="../bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="functions.js"></script>
     <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 </head>
 <body>
@@ -33,23 +29,24 @@
 
         </div>
         <?php
-
         session_start();
         include('../config.php');
         include('../nodes/index.php');
+
         if (isset($_SESSION['email'])) {
             $email = $_SESSION['email'];
             ?>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
+                    <li><a href="./profile/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            Profile</a>
                     </li>
                     <?php
                     if (getPermissions($email) == 1) {
-                        print '<li><a href="../driver/">Driver</a>';
-                        print '<li><a href="../admin/">Admin</a>';
+                        print '<li><a href="../driver/">Driver</a></li>';
+                        print '<li><a href="../admin/">Admin</a></li>';
                     } else if (getPermissions($email) == 2) {
-                        print '<li><a href="../driver/">Driver</a>';
+                        print '<li><a href="../driver/">Driver</a></li>';
                     }
                     ?>
                     <li><a href="../logout.php">Logout</a></li>
@@ -70,76 +67,43 @@
     </div>
 </nav>
 
-
 <?php
 if (isset($_SESSION['email-unverified'])) {
     print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Please check your mail to activate your account!</div>';
 }
-
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-    if (checkUserRequest($email) != 1) {
-        ?>
-        <form action="index.php" method="post">
-            <button name="sendButton" type="submit" class="btn btn-success center-block btn-lg">
-                Request
-            </button>
-            <br/>
-        </form>
-        <?php
-        if (isset($_POST['sendButton'])) {
-            $sql = "SELECT * FROM project_users WHERE email= '$email'";
-            if ($result = mysqli_query($conn, $sql)) {
-                $rowcount = mysqli_num_rows($result);
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-
-                $requestEmail = $row['email'];
-                $requestAddress = $row['address'];
-
-
-                $sql2 = "INSERT INTO project_requests (email, address)VALUES('$requestEmail', '$requestAddress')";
-                if (mysqli_query($conn, $sql2)) {
-                    print '<div class="alert alert-success" role="alert">Successfully requested!</div>';
-                }
-            }
-        }
-    } else {
-        print '<button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>';
-    }
-} else {
-    print '<button name="sendButton" type="submit" class="btn btn-success disabled center-block btn-lg">Request</button><br/>';
-}
-
-
-function checkUserRequest($email)
-{
-    global $conn;
-    $sql = "SELECT * FROM project_requests WHERE email= '$email'";
-    $result = mysqli_query($conn, $sql);
-    $rowcount = mysqli_num_rows($result);
-
-    $sql2 = "SELECT * FROM project_requests_processing WHERE email= '$email'";
-
-    $result2 = mysqli_query($conn, $sql2);
-    $rowcount2 = mysqli_num_rows($result2);
-
-    if ($rowcount > 0 || $rowcount2 > 0) {
-        return 1;
-    } else {
-        return -1;
-    }
-}
-
 ?>
-<div id="requests-data">
-    <script type="text/javascript">
-        setInterval(function () {
-            getData();
-        }, 2500);
-    </script>
-</div>
+<?php
+if (isset($_SESSION['email'])) {
+    ?>
+    <form method="post" action="review_proc.php">
+        <div class="form-group col-xs-4" style="background-color: white; border-radius: 25px; margin-left: 10%">
+            <h2 class="form-heading ">Write a Review</h2>
 
+            <div id="result" style="font-size: large">0/5</div>
+            <input name="rating" id="silder" type="range" min="0" max="5" step="0.5" value="0"
+                   onchange="changevalue()"/>
+            <script type="text/javascript">
+                function changevalue() {
+                    var x = document.getElementById("result");
+                    x.innerHTML = document.getElementById("silder").value + "/5";
+                }
+            </script>
+        <textarea style="max-width: 100%;min-width:100%;height: 100px;margin-top: 10px;" placeholder="Write your review"
+                  name="comment"
+                  class="form-control"></textarea>
+
+            <div style="position:relative; left:90px;top:0px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </div>
+    </form>
+    <?php
+} else {
+    echo "<h2>You have to be logged in to submit a review:</br>
+Sign in here <a href=\"../login/\">Login</a></h2>";
+}
+?>
 <div class="navbar navbar-fixed-bottom">
     <div id="footer-data" style="text-align:center">
         <a href="https://github.com/BAUCSTeam" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>

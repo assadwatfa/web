@@ -73,23 +73,26 @@ if (isset($_SESSION['email-unverified'])) {
 }
 
 ?>
-
+<div>
+    <form action="review.php"method="">
+    <p><button class="btn btn-primary"type="submit"style="margin-left:50%">Write a Review</button></p>
+</form>
+</div>
 <?php
 $query = "SELECT * FROM project_reviews ORDER BY date_reviewed DESC LIMIT 20";
 $result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
 if ($result) {
-
     $num_rows = mysqli_num_rows($result);
     if ($num_rows > 0) {
 
-        print "<table class=\"table table-bordered \"style='background-color: inherit;min-width: 50%;max-width: 50%;margin-left:50px; '>";
+        print "<table class=\"table  \"style='background-color: inherit;border-collapse: collapse;border-radius:20px;min-width: 50%;max-width: 50%;margin-left:50px; '>";
         for ($row_num = 1; $row_num <= $num_rows; $row_num++) {
             $row = mysqli_fetch_assoc($result);
-            echo "<tr> <td ><div style='background-color: gainsboro'>Rating: " . $row['rating'] . "/5</br>
+            echo "<tr> <td ><div style='background-color: gainsboro;border-radius: 20px'><p style='margin-left: 20px;font-size: medium'><b>Rating:</b> " . $row['rating'] . "/5</br>
         From:" . $row['email'] . "
         </br>
-        On:" . $row['date_reviewed'] . "</div>";
-            echo "<div style='background-color: white'>" . $row['comment'] . "</div></td></tr>";
+        On:" . $row['date_reviewed'] . "</p></div>";
+            echo "<div style='background-color: white;border-radius: 50px;'><p style='margin-left: 20px;font-size: large'>" . $row['comment'] . "</p></div></td></tr>";
 
         }
         echo "</table>";

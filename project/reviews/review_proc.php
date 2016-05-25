@@ -73,11 +73,38 @@ if (isset($_SESSION['email-unverified'])) {
 }
 ?>
 <?php
-$rating = $_POST['rating'];
-$comment = $_POST['comment'];
-$sql = "INSERT INTO project_reviews (rating,comment,email) VALUES ('$rating','$comment','$email')";
-if (mysqli_query($conn, $sql)) {
-    echo "<h2> Review Successfully Submitted</h2> ";
+if (isset($_POST['rating'])) {
+    $rating = strip_tags($_POST['rating']);
+}
+
+if (isset($_POST['comment'])) {
+    $comment = strip_tags($_POST['comment']);
+}
+
+if (isset($_POST['rating']) && isset($_POST['comment'])) {
+    if (!empty($comment)) {
+        $query = "SELECT * FROM project_reviews  WHERE email='$email'";
+        $result = mysqli_query($conn, $query) or die("Connection failed: " . mysqli_connect_error());
+        if ($result) {
+            $numrows = mysqli_num_rows($result);
+            if ($numrows > 0) {
+
+                $query2 = "DELETE  From project_reviews  WHERE email='$email'";
+                $result2 = mysqli_query($conn, $query2);
+                if ($result2) {
+                    echo "<h2> Old Review was Deleted</h2>";
+                }
+            }
+        }
+        $sql = "INSERT INTO project_reviews (rating,comment,email) VALUES ('$rating','$comment','$email')";
+        if (mysqli_query($conn, $sql)) {
+            echo "<h2> Review Successfully Submitted</h2> ";
+        }
+    } else {
+        print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Comment cannot be empty!</div>';
+    }
+} else {
+    print '<div class="alert alert-danger" role="alert" style="text-align: center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Comment is not set!</div>';
 }
 
 ?>
